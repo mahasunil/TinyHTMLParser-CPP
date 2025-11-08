@@ -21,6 +21,14 @@ A simple HTML parser written in C++ that builds a DOM-like tree and prints neste
     <p>This is paragraph.</p>
   </body>
 </html>
+```
 
 ### Parser Output
+html
+ body
+  h1: This is heading.
+  p: This is paragraph.
+
+### Parser Output (Screenshot)
 ![Parser Output](screenshots/tiny-html.png)
+
