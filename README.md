@@ -9,6 +9,6 @@ A simple HTML parser written in C++ that builds a DOM-like tree and prints neste
 
 ## Planned Features
    - Attribute parsing to capture tag details (e.g., `class`, `id`)
-   - Support for self-closing tags such as '<img/>', '<br/>', '<hr/>' etc.
+   - Support for self-closing tags
    - Graceful handling of malformed HTML
    - Modern memory management using `unique_ptr`
