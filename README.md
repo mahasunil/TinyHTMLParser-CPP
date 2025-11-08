@@ -12,3 +12,15 @@ A simple HTML parser written in C++ that builds a DOM-like tree and prints neste
    - Support for self-closing tags
    - Graceful handling of malformed HTML
    - Modern memory management using `unique_ptr`
+
+### Sample HTML Input
+```html
+<html>
+  <body>
+    <h1>This is heading.</h1>
+    <p>This is paragraph.</p>
+  </body>
+</html>
+
+### Parser Output
+![Parser Output](screenshots/tiny-html.png)
