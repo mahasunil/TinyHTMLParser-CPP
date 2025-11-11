@@ -1,6 +1,14 @@
 # Tiny HTML Parser in c++
 
-A simple HTML parser written in C++ that builds a DOM-like tree and prints nested HTML tags with their text content.
+A minimal educational HTML parser written in C++ that builds a DOM-like tree and prints nested HTML tags with their text content.
+
+## Overview
+This project is designed for learning how parsing and tree construction work in C++.
+It focuses on building a foundational understanding of
+- String parsing
+- Recursion
+- Tree data structure
+- Object-oriented programming concepts. 
 
 ## Features
    - Builds a tree of nodes representing HTML elements
