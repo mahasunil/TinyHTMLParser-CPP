@@ -14,9 +14,9 @@ It focuses on building a foundational understanding of
    - Builds a tree of nodes representing HTML elements
    - Stores tag name, text content, and child nodes
    - Recursive printing of HTML structure
+   - Attribute parsing to capture tag details (e.g., `class`, `id`)
 
 ## Planned Features
-   - Attribute parsing to capture tag details (e.g., `class`, `id`)
    - Support for self-closing tags
    - Graceful handling of malformed HTML
    - Modern memory management using `unique_ptr`
@@ -25,8 +25,8 @@ It focuses on building a foundational understanding of
 ```html
 <html>
   <body>
-    <h1>This is heading.</h1>
-    <p>This is paragraph.</p>
+    <h1 id="mainHeader" class="title">This is heading.</h1>
+    <p class="para">This is paragraph.</p>
   </body>
 </html>
 ```
@@ -34,9 +34,9 @@ It focuses on building a foundational understanding of
 ### Parser Output
 html
  body
-  h1: This is heading.
-  p: This is paragraph.
+  h1:[id="mainHeader", class="title"]: This is heading.
+  p:[class="para"]: This is paragraph.
 
 ### Parser Output (Screenshot)
-![Parser Output](screenshots/tiny-html.png)
+![Parser Output](screenshots/tiny-html-praser.png)
 
