@@ -32,10 +32,12 @@ It focuses on building a foundational understanding of
 ```
 
 ### Parser Output
+```text
 html
  body
   h1:[id="mainHeader", class="title"]: This is heading.
   p:[class="para"]: This is paragraph.
+```
 
 ### Parser Output (Screenshot)
 ![Parser Output](screenshots/tiny-html-praser.png)
