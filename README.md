@@ -15,9 +15,9 @@ It focuses on building a foundational understanding of
    - Stores tag name, text content, and child nodes
    - Recursive printing of HTML structure
    - Attribute parsing to capture tag details (e.g., `class`, `id`)
+   - Support for self-closing tags
 
 ## Planned Features
-   - Support for self-closing tags
    - Graceful handling of malformed HTML
    - Modern memory management using `unique_ptr`
 
@@ -26,6 +26,8 @@ It focuses on building a foundational understanding of
 <html>
   <body>
     <h1 id="mainHeader" class="title">This is heading.</h1>
+      <img src=""/>
+     <input type="text" placeholder="something"/>
     <p class="para">This is paragraph.</p>
   </body>
 </html>
@@ -36,6 +38,8 @@ It focuses on building a foundational understanding of
 html
  body
   h1:[id="mainHeader", class="title"]: This is heading.
+  img:[src=""]
+  input:[type="text", placeholder="something"]
   p:[class="para"]: This is paragraph.
 ```
 
