@@ -3,6 +3,7 @@
 #include <stack>
 #include <sstream>
 #include <map>
+#include <set>
 
 using namespace std;
 
@@ -87,6 +88,21 @@ public:
         delete root;
     }
 
+    bool isSelfCloseTag(const string &tag)
+    {
+        static const set<string> selfCloseTag = {"img", "br", "hr", "input", "meta", "link", "area", "base", "col", "embed", "param", "source", "track", "wbr"};
+        return selfCloseTag.count(tag);
+    }
+
+    string trim(const string &str)
+    {
+        size_t start = str.find_first_not_of(" \t\n\r");
+        if (start == string::npos)
+            return "";
+        size_t end = str.find_last_not_of(" \t\n\r");
+        return str.substr(start, end - start + 1);
+    }
+
     ParseHTML(const string &html)
     {
         for (size_t i = 0; i < html.size(); i++)
@@ -96,7 +112,8 @@ public:
             {
                 if (!texts.empty() && !st.empty())
                 {
-                    st.top()->addTextContent(texts);
+                    string trimedText = trim(texts);
+                    st.top()->addTextContent(trimedText);
                 }
                 insideTag = true;
                 tagName = "";
@@ -104,7 +121,16 @@ public:
             }
             else if (ch == '>')
             {
+                bool isSelfClose = false;
+
                 insideTag = false;
+
+                if (!tagName.empty() && tagName.back() == '/')
+                {
+                    isSelfClose = true;
+                    tagName.pop_back();
+                }
+
                 if (tagName[0] == '/')
                 {
                     if (!st.empty())
@@ -168,7 +194,10 @@ public:
                     {
                         st.top()->addChildren(newNode);
                     }
-                    st.push(newNode);
+                    if (!isSelfClose && !isSelfCloseTag(tagText))
+                    {
+                        st.push(newNode);
+                    }
                 }
             }
             else
@@ -189,7 +218,11 @@ public:
 
 int main()
 {
-    string html = R"(<html><body><h1 id="mainHeader" class="title">This is heading.</h1><p class="para">This is paragraph.</p></body></html>)";
+    string html = R"(<html><body><h1 id="mainHeader" class="title">This is heading.</h1>
+     <img src=""/>
+     <input type="text" placeholder="something"/>
+    <p class="para">This is paragraph.</p></body></html>)";
+    
     ParseHTML parse(html);
     Node *rootNode = parse.getRoot();
     rootNode->print();
