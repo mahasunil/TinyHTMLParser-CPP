@@ -44,5 +44,5 @@ html
 ```
 
 ### Parser Output (Screenshot)
-![Parser Output](screenshots/tiny-html-praser.png)
+![Parser Output](screenshots/tiny-html-output2.png)
 
